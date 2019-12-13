@@ -1,4 +1,5 @@
 @import "./Repository/style.css";
+@import "./Error/style.css";
 
 * {
   padding: 0;
