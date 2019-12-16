@@ -5,26 +5,26 @@ import Loading from "../../Loading";
 import FetchMore from "../../FetchMore";
 import "../style.css";
 
-const updateQuery = (prevResult, { fetchMoreResult }) => {
+const getUpdateQuery = entry => (prevResult, { fetchMoreResult }) => {
   if (!fetchMoreResult) return prevResult;
 
   return {
     ...prevResult,
-    viewer: {
-      ...prevResult.viewer,
+    [entry]: {
+      ...prevResult[entry],
       repositories: {
-        ...prevResult.viewer.repositories,
-        ...fetchMoreResult.viewer.repositories,
+        ...prevResult[entry].repositories,
+        ...fetchMoreResult[entry].repositories,
         edges: [
-          ...prevResult.viewer.repositories.edges,
-          ...fetchMoreResult.viewer.repositories.edges
+          ...prevResult[entry].repositories.edges,
+          ...fetchMoreResult[entry].repositories.edges
         ]
       }
     }
   };
 };
 
-const RepositoryList = ({ repositories, loading, fetchMore }) => (
+const RepositoryList = ({ repositories, loading, fetchMore, entry }) => (
   <Fragment>
     {loading ? (
       <Loading />
@@ -40,7 +40,7 @@ const RepositoryList = ({ repositories, loading, fetchMore }) => (
       loading={loading}
       hasNextPage={repositories.pageInfo.hasNextPage}
       variables={{ cursor: repositories.pageInfo.endCursor }}
-      updateQuery={updateQuery}
+      updateQuery={getUpdateQuery(entry)}
       fetchMore={fetchMore}
     >
       Repositories
