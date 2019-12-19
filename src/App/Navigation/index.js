@@ -47,7 +47,15 @@ class OrganizationSearch extends React.Component {
     const { value } = this.state;
     return (
       <div className="Navigation-search">
-        <form onSubmit={this.onSubmit}>
+        <form
+          onSubmit={this.onSubmit}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "1rem"
+          }}
+        >
           <Input
             color={"white"}
             type="text"

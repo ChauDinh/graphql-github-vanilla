@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
+
+.Navigation-link {
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  text-align: center;
+}
