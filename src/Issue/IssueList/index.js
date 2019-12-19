@@ -34,9 +34,13 @@ const TRANSITION_STATE = {
 };
 
 const GET_ISSUES_OF_REPOSITORY = gql`
-  query($repositoryOwner: String!, $repositoryName: String!) {
+  query(
+    $repositoryOwner: String!
+    $repositoryName: String!
+    $issueState: IssueState!
+  ) {
     repository(name: $repositoryName, owner: $repositoryOwner) {
-      issues(first: 5) {
+      issues(first: 5, states: [$issueState]) {
         edges {
           node {
             id
@@ -67,7 +71,7 @@ const Issues = ({
     {isShow(issueState) && (
       <Query
         query={GET_ISSUES_OF_REPOSITORY}
-        variables={{ repositoryOwner, repositoryName }}
+        variables={{ repositoryOwner, repositoryName, issueState }}
       >
         {({ data, loading, error }) => {
           if (loading) {
