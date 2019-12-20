@@ -1,3 +1,49 @@
+.Button {
+  padding: 10px;
+  /* background: none; */
+  cursor: pointer;
+  transition: color 0.25s ease-in-out;
+  transition: background 0.25s ease-in-out;
+}
+
 .Button_white {
   margin-left: 1rem;
+  border: 1px solid #fff;
+  color: #000;
+}
+
+.Button_white:hover {
+  color: #000;
+  background: #fff;
+}
+
+.Button_black {
+  background-color: #000;
+  border: 1px solid #f7f7f7;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.Button_black:hover {
+  color: #000;
+  background: #f7f7f7;
+}
+
+.Button_unobtrusive {
+  padding: 0;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+  outline: none;
+}
+
+.Button_unobtrusive:hover {
+  opacity: 0.35;
+}
+
+.Button_unobtrusive:focus {
+  outline: none;
 }
